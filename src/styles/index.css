@@ -6,6 +6,10 @@
   body {
     @apply bg-dark p-5 font-quicksand text-white;
   }
+  section {
+    @apply mb-10;
+  }
+
   h1 {
     @apply font-bold text-4xl py-1.5;
   }

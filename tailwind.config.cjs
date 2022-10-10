@@ -16,7 +16,7 @@ module.exports = {
         lg: "10px",
         xl: "14px",
         "2xl": "20px",
-        "3xl": "3xl",
+        "3xl": "25px",
         "4xl": "40px",
       },
       fontFamily: {

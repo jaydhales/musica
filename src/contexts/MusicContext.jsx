@@ -8,6 +8,13 @@ const MusicContextProvider = ({ children }) => {
   //apiUrl = "https://api.deezer.com/";
   const [hero, setHero] = useState();
   const [chartsData, setChartsData] = useState();
+  const [release, setRelease] = useState();
+  const [popular, setPopular] = useState();
+  const [screenWidth, setScreenWidth] = useState();
+
+  
+  //Get Screen Width 
+  window.onresize = (e) => setScreenWidth(e.target.innerWidth);
 
   const fetchData = async (path) => {
     return (await axios.get(`/api/${path}`)).data;
@@ -17,6 +24,8 @@ const MusicContextProvider = ({ children }) => {
     async function runData() {
       setHero(await fetchData("playlist/6059358144"));
       setChartsData(await fetchData("chart/0/playlists"));
+      setRelease(await fetchData("chart/0/albums"));
+      setPopular(await fetchData("chart/0/tracks"));
     }
 
     runData();
@@ -27,6 +36,9 @@ const MusicContextProvider = ({ children }) => {
       value={{
         hero,
         chartsData,
+        release,
+        popular,
+        screenWidth
       }}
     >
       {children}

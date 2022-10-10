@@ -37,7 +37,7 @@
   }
 
   .hero {
-    @apply rounded-4xl lg:w-[70%] h-96 bg-hero p-8 md:px-11 relative overflow-hidden;
+    @apply rounded-4xl w-full h-96 bg-hero p-8 md:px-11 relative overflow-hidden;
   }
 
   .grain {
@@ -61,7 +61,7 @@
   }
 
   .chart-section {
-    @apply lg:w-[30%] h-full overflow-hidden;
+    @apply lg:w-[500px] h-full overflow-hidden;
   }
 
   .chart-main {
@@ -81,10 +81,25 @@
   }
 
   .details {
-    @apply mt-0 ;
+    @apply mt-0;
   }
 
   .like-icon {
     @apply w-max h-max lg:m-auto;
+  }
+
+  .albums-section {
+    @apply md:w-[calc(100vw-140px)] overflow-hidden;
+  }
+  .lists {
+    @apply grid grid-flow-col w-max gap-[30px];
+  }
+
+  .album-card {
+    @apply w-[153px];
+  }
+
+  .album-card img {
+    @apply w-full rounded-3xl;
   }
 }

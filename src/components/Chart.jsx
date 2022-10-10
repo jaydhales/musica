@@ -1,4 +1,4 @@
-import ObjectSvg from "../components/ObjectSvg";
+import ObjectSvg from "./ObjectSvg";
 import likeIcon from "../assets/like.svg";
 
 const Chart = ({ info }) => {
