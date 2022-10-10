@@ -5,19 +5,18 @@ const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
   // All logic stays here
-  //apiUrl = "https://api.deezer.com/";
+  const apiUrl = "https://api.deezer.com/";
   const [hero, setHero] = useState();
   const [chartsData, setChartsData] = useState();
   const [release, setRelease] = useState();
   const [popular, setPopular] = useState();
   const [screenWidth, setScreenWidth] = useState();
 
-  
-  //Get Screen Width 
+  //Get Screen Width
   window.onresize = (e) => setScreenWidth(e.target.innerWidth);
 
   const fetchData = async (path) => {
-    return (await axios.get(`/api/${path}`)).data;
+    return (await axios.get(apiUrl + path)).data;
   };
 
   useEffect(() => {
@@ -38,7 +37,7 @@ const MusicContextProvider = ({ children }) => {
         chartsData,
         release,
         popular,
-        screenWidth
+        screenWidth,
       }}
     >
       {children}
