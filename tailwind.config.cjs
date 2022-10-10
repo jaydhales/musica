@@ -10,6 +10,7 @@ module.exports = {
         primary: "#A4C7C6",
         "dark-alt": "#1A1E1F",
         alt: "#a4c7c6",
+        hero: "#609EAF",
       },
       borderRadius: {
         lg: "10px",

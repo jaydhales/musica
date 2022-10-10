@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 // Import Components
 import Menu from "./components/Menu";
 import Search from "./components/Search";
@@ -9,18 +9,26 @@ import Radio from "./routes/Radio";
 import Library from "./routes/Library";
 
 import "./styles/App.css";
+import logo from "./assets/logo.svg";
 
 function App() {
+  const path = useLocation();
+  if (path.pathname === "/") path.pathname = "/home";
+
   return (
-    <div className="App">
-      <Menu />
-      <div className="main">
+    <div className="app">
+      <header>
+        <img src={logo} alt="Musica Logo" className="p-1" />
         <Search />
+      </header>
+
+      <div className="main">
+        <Menu />
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="collections" element={<Collections />} />
-          <Route path="radio" element={<Radio />} />
-          <Route path="library" element={<Library />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/radio" element={<Radio />} />
+          <Route path="/library" element={<Library />} />
         </Routes>
       </div>
     </div>

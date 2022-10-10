@@ -2,4 +2,85 @@
 @tailwind utilities;
 
 @layer components {
+  header {
+    @apply flex gap-8;
+  }
+  .main {
+    @apply md:flex w-full gap-8 my-6 md:w-[calc(100vw-140px)] lg:w-full lg:pr-12;
+  }
+
+  .nav {
+    @apply bg-dark-alt hidden md:block w-max py-4 rounded-full;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-4;
+  }
+
+  .nav-link span {
+    @apply hidden;
+  }
+
+  .nav-link.active {
+  }
+
+  .home {
+    @apply w-full;
+  }
+
+  .top-section {
+    @apply lg:flex gap-4 lg:h-96;
+  }
+
+  .hero {
+    @apply rounded-4xl lg:w-[70%] h-96 bg-hero p-8 md:px-11 relative overflow-hidden;
+  }
+
+  .grain {
+    @apply absolute -top-40 -right-40 md:top-0 md:right-0 rotate-90 md:rotate-0 md:h-full;
+  }
+
+  .cover {
+    @apply hidden md:block absolute h-full bottom-0 right-4 lg:right-0 mix-blend-multiply;
+  }
+
+  .content {
+    @apply grid place-content-between h-full;
+  }
+
+  .hero .content {
+    @apply md:w-1/2;
+  }
+
+  .details {
+    @apply mt-20 md:mt-8;
+  }
+
+  .chart-section {
+    @apply lg:w-[30%] h-full overflow-hidden;
+  }
+
+  .chart-main {
+    @apply flex lg:flex-col w-max lg:w-auto gap-8 lg:gap-4;
+  }
+
+  .chart {
+    @apply bg-dark-alt rounded-2xl p-4 flex justify-between w-80 lg:w-full;
+  }
+
+  .chart .content {
+    @apply lg:grid-flow-col gap-4;
+  }
+
+  .chart-icon {
+    @apply w-28 lg:w-16 lg:h-full rounded-lg;
+  }
+
+  .details {
+    @apply mt-0;
+  }
+
+  .like-icon {
+    @apply h-max lg:m-auto;
+  }
 }
