@@ -5,6 +5,10 @@
   header {
     @apply flex gap-8;
   }
+  .app {
+    @apply max-w-[2000px] mx-auto;
+  }
+
   .main {
     @apply md:flex w-full gap-8 my-6 md:w-[calc(100vw-140px)] lg:w-full lg:pr-12;
   }
@@ -69,7 +73,7 @@
   }
 
   .chart .content {
-    @apply lg:grid-flow-col gap-4;
+    @apply lg:grid-flow-col lg:place-content-start w-full gap-4;
   }
 
   .chart-icon {
@@ -77,10 +81,10 @@
   }
 
   .details {
-    @apply mt-0;
+    @apply mt-0 ;
   }
 
   .like-icon {
-    @apply h-max lg:m-auto;
+    @apply w-max h-max lg:m-auto;
   }
 }
