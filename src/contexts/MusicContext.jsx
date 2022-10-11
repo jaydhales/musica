@@ -5,7 +5,7 @@ const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
   // All logic stays here
-  const apiUrl = "https://api.deezer.com/";
+  const apiUrl = "https://cors-anywhere.herokuapp.com/api.deezer.com/";
   const [hero, setHero] = useState();
   const [chartsData, setChartsData] = useState();
   const [release, setRelease] = useState();
@@ -17,7 +17,7 @@ const MusicContextProvider = ({ children }) => {
 
   const fetchData = async (path) => {
     return (
-      await axios.get(apiUrl + path, {
+      await axios.get("/api/" + path, {
         headers: {
           "Access-Control-Allow-Headers": "Content-Type",
           "Access-Control-Allow-Origin": "*",
