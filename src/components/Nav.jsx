@@ -8,6 +8,7 @@ import radioIcon from "../assets/radio.svg";
 import radioIconActive from "../assets/radio-active.svg";
 import videoIcon from "../assets/videos.svg";
 import videoIconActive from "../assets/video-active.svg";
+import { useState } from "react";
 
 const Nav = () => {
   const navArr = [
@@ -27,8 +28,14 @@ const Nav = () => {
           <img
             src={src}
             alt={title}
-            className={src !== homeIcon ? "p-[10px]" : ""}
+            className={src !== homeIcon ? "p-[10px] nav-icon" : "nav-icon"}
           />
+          <img
+            src={srcActive}
+            alt={title}
+            className={src !== homeIcon ? "p-[10px] nav-icon-a" : "nav-icon-a"}
+          />
+
           <span>{title}</span>
         </NavLink>
       ))}

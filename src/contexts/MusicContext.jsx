@@ -11,8 +11,10 @@ const MusicContextProvider = ({ children }) => {
   const [release, setRelease] = useState();
   const [popular, setPopular] = useState();
   const [screenWidth, setScreenWidth] = useState();
+  const [details, setDetails] = useState();
 
   //Get Screen Width
+  window.onload = (e) => setScreenWidth(window.innerWidth);
   window.onresize = (e) => setScreenWidth(e.target.innerWidth);
 
   const fetchData = async (path) => {
@@ -46,6 +48,9 @@ const MusicContextProvider = ({ children }) => {
         release,
         popular,
         screenWidth,
+        details,
+        setDetails,
+        fetchData,
       }}
     >
       {children}

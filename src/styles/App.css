@@ -25,10 +25,19 @@
     @apply hidden;
   }
 
-  .nav-link.active {
-    
+  .active .nav-icon {
+    @apply hidden;
   }
 
+  .nav-icon-a {
+    @apply hidden
+  }
+
+  .active .nav-icon-a {
+    @apply block;
+  }
+
+  
   .home {
     @apply w-full;
   }
