@@ -16,7 +16,15 @@ const MusicContextProvider = ({ children }) => {
   window.onresize = (e) => setScreenWidth(e.target.innerWidth);
 
   const fetchData = async (path) => {
-    return (await axios.get(apiUrl + path)).data;
+    return (
+      await axios.get(apiUrl + path, {
+        headers: {
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
+      })
+    ).data;
   };
 
   useEffect(() => {
