@@ -1,3 +1,1 @@
-/api/_ https://api.deezer.com/:splat 200
-/_ /index.html 200
-/\* /index.html 404
+/api\_ https://api.deezer.com
