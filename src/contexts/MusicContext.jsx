@@ -19,13 +19,7 @@ const MusicContextProvider = ({ children }) => {
 
   const fetchData = async (path) => {
     return (
-      await axios.get("/api/" + path, {
-        headers: {
-          "Access-Control-Allow-Headers": "Content-Type",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-      })
+      await axios.get("/api/" + path)
     ).data;
   };
 
