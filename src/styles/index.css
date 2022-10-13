@@ -3,8 +3,8 @@
 @tailwind base;
 
 @layer base {
-  body {
-    @apply bg-dark p-5 font-quicksand text-white;
+  #root {
+    @apply bg-cover bg-fixed;
   }
   section {
     @apply mb-10;

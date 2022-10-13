@@ -28,12 +28,12 @@ const Nav = () => {
           <img
             src={src}
             alt={title}
-            className={src !== homeIcon ? "p-[10px] nav-icon" : "nav-icon"}
+            className={src !== homeIcon ? "py-[10px] nav-icon" : "nav-icon"}
           />
           <img
             src={srcActive}
             alt={title}
-            className={src !== homeIcon ? "p-[10px] nav-icon-a" : "nav-icon-a"}
+            className={src !== homeIcon ? "py-[10px] nav-icon-a" : "nav-icon-a"}
           />
 
           <span>{title}</span>

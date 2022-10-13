@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { MusicContext } from "../contexts/MusicContext.jsx";
 
 const Home = () => {
-  const { release, popular } = useContext(MusicContext);
+  const { release, popular, setDetailsBg } = useContext(MusicContext);
 
   return (
     <div className="home">

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
+
 const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
@@ -12,15 +13,16 @@ const MusicContextProvider = ({ children }) => {
   const [popular, setPopular] = useState();
   const [screenWidth, setScreenWidth] = useState();
   const [details, setDetails] = useState();
+  const [detailsBg, setDetailsBg] = useState("");
+
+  
 
   //Get Screen Width
   window.onload = (e) => setScreenWidth(window.innerWidth);
   window.onresize = (e) => setScreenWidth(e.target.innerWidth);
 
   const fetchData = async (path) => {
-    return (
-      await axios.get("/api/" + path)
-    ).data;
+    return (await axios.get("/api/" + path)).data;
   };
 
   useEffect(() => {
@@ -45,6 +47,8 @@ const MusicContextProvider = ({ children }) => {
         details,
         setDetails,
         fetchData,
+        detailsBg,
+        setDetailsBg,
       }}
     >
       {children}
