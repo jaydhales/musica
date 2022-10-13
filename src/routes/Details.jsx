@@ -17,7 +17,7 @@ const Details = () => {
       const data = await fetchData(type + "/" + query);
 
       setDetails(data);
-      setDetailsBg(data.picture_xl);
+      setDetailsBg(data.picture_xl || data.cover_xl);
     }
 
     getDetails();
@@ -28,14 +28,19 @@ const Details = () => {
   return (
     <div>
       <section className="detail-top-sect">
-        <img src={details.picture_medium} alt="" className="detail-img" />
+        <img
+          src={details.picture_medium || details.cover_medium}
+          alt=""
+          className="detail-img"
+        />
 
         <div className="detail-content">
           <h1 className="text-primary">{details.title}</h1>
           <p className="my-3">{details.description}</p>
           <p>
             <span>{details.nb_tracks} tracks </span> -
-            <span> {Math.floor(details.duration / 3600)} hrs+</span>
+            <span> {Math.floor(details.duration / 3600)} hrs </span>
+            <span> {Math.floor((details.duration % 3600) / 60)} mins </span>
           </p>
 
           <div className="detail-options">

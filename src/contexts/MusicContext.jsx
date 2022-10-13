@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
-
 const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
@@ -15,8 +14,6 @@ const MusicContextProvider = ({ children }) => {
   const [details, setDetails] = useState();
   const [detailsBg, setDetailsBg] = useState("");
 
-  
-
   //Get Screen Width
   window.onload = (e) => setScreenWidth(window.innerWidth);
   window.onresize = (e) => setScreenWidth(e.target.innerWidth);
@@ -29,7 +26,7 @@ const MusicContextProvider = ({ children }) => {
     async function runData() {
       setHero(await fetchData("playlist/6059358144"));
       setChartsData(await fetchData("chart/0/playlists?index=0&limit=3"));
-      setRelease(await fetchData("chart/0/albums"));
+      setRelease(await fetchData("editorial/2/releases"));
       setPopular(await fetchData("chart/0/albums"));
     }
 

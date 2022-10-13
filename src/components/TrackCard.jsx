@@ -5,11 +5,8 @@ import ObjectSvg from "./ObjectSvg";
 const TrackCard = ({ data }) => {
   const { id, title, link, artist, duration, album } = data;
 
-  console.log(data);
-  console.log(this);
-
   return (
-    <div className="track-card">
+    <div className="track-card" onClick={e => console.log(data)}>
       <div className="flex gap-4 items-center">
         <img src={album.cover_small} className="track-cover" />
         <img src={Heart} alt="" className="w-5" />
