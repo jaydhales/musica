@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-
 const MusicContext = createContext();
 
 const MusicContextProvider = ({ children }) => {
@@ -12,6 +11,8 @@ const MusicContextProvider = ({ children }) => {
   const [popular, setPopular] = useState();
   const [screenWidth, setScreenWidth] = useState();
   const [details, setDetails] = useState();
+  const CLIENT_ID = "5981e190940d46fba143331a433de2b2v";
+  const REDIRECT_URI = "localhost:5173";
 
   //Get Screen Width
   window.onload = (e) => setScreenWidth(window.innerWidth);
