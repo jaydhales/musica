@@ -1,7 +1,12 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { MusicContext } from "./contexts/MusicContext";
+
 // Import Components
 import Menu from "./components/Menu";
 import Search from "./components/Search";
+import Player from "./components/Player.jsx";
+import ObjectSvg from "./components/ObjectSvg";
 // Import Routes
 import Home from "./routes/Home";
 import Collections from "./routes/Collections";
@@ -11,20 +16,18 @@ import Details from "./routes/Details";
 
 import "./styles/App.css";
 import logo from "./assets/logo.svg";
-import { useContext, useEffect } from "react";
-import { MusicContext } from "./contexts/MusicContext";
+import bars from "./assets/bars.svg";
 
 function App() {
   const path = useLocation();
-  const { detailsBg,setDetails, setDetailsBg } = useContext(MusicContext);
+  const { detailsBg, setDetails, setDetailsBg } = useContext(MusicContext);
   if (path.pathname === "/") path.pathname = "/home";
 
   useEffect(() => {
     if (path.pathname === "/home" || "/collections" || "/library" || "radio") {
-      setDetailsBg("")
-      setDetails('')
-    };
-
+      setDetailsBg("");
+      setDetails("");
+    }
   }, [path]);
 
   // Set Background  to current music
@@ -36,6 +39,7 @@ function App() {
     <div className={bodyClass}>
       <div className="app">
         <header>
+          <ObjectSvg data={bars} />
           <img src={logo} alt="Musica Logo" className="p-1" />
           <Search />
         </header>
@@ -49,6 +53,7 @@ function App() {
             <Route path="/library" element={<Library />} />
             <Route path="/:type/:query" element={<Details />} />
           </Routes>
+          <Player />
         </div>
       </div>
     </div>

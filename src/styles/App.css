@@ -23,7 +23,7 @@
   }
 
   .main {
-    @apply md:pl-16 w-full gap-8 my-6 lg:pr-6;
+    @apply md:pl-16 w-full gap-8 my-6 lg:pr-6 pb-16;
   }
 
   .menu {
@@ -74,7 +74,7 @@
   }
 
   .cover {
-    @apply hidden md:block absolute h-full bottom-0 right-4 lg:right-0 mix-blend-multiply;
+    @apply hidden md:block absolute h-full bottom-0 right-4 lg:right-0;
   }
 
   .content {
@@ -125,7 +125,7 @@
   }
 
   .album-card {
-    @apply w-[153px];
+    @apply w-[153px] overflow-hidden;
   }
 
   .album-card img {
@@ -159,6 +159,10 @@
 
   .track-info {
     @apply grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1  w-full relative;
+  }
+
+  .info3 {
+    @apply text-center;
   }
 
   .info4 {

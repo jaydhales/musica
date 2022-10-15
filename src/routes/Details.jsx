@@ -8,7 +8,7 @@ import Play from "../assets/Play.svg";
 import Add from "../assets/music-square-add.svg";
 
 const Details = () => {
-  const { details, setDetails, fetchData, setDetailsBg } =
+  const { details, setDetails, fetchData, setDetailsBg, setAudioQueue } =
     useContext(MusicContext);
   const { type, query } = useParams();
 
@@ -18,10 +18,20 @@ const Details = () => {
 
       setDetails(data);
       setDetailsBg(data.picture_xl || data.cover_xl);
+      // setAudioQueue(data.tracks);
     }
 
     getDetails();
   }, []);
+
+  const handleOptions = (e, text) => {
+    e.preventDefault();
+    console.log(text);
+
+    if (text === "Play All") {
+      setAudioQueue(details.tracks);
+    }
+  };
 
   if (!details) return null;
 
@@ -46,7 +56,12 @@ const Details = () => {
           <div className="detail-options">
             {[[Play, "Play All"], [Add, "Add to collection"], [HeartA]].map(
               ([src, text]) => (
-                <a href="#" className="btn" key={src}>
+                <a
+                  href="#"
+                  className="btn"
+                  key={src}
+                  onClick={(e) => handleOptions(e, text)}
+                >
                   <img src={src} alt="src" />
                   {text && <p>{text}</p>}
                 </a>

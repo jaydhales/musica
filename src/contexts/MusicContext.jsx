@@ -13,6 +13,7 @@ const MusicContextProvider = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState();
   const [details, setDetails] = useState();
   const [detailsBg, setDetailsBg] = useState("");
+  const [audioQueue, setAudioQueue] = useState();
 
   //Get Screen Width
   window.onload = (e) => setScreenWidth(window.innerWidth);
@@ -46,6 +47,8 @@ const MusicContextProvider = ({ children }) => {
         fetchData,
         detailsBg,
         setDetailsBg,
+        audioQueue,
+        setAudioQueue,
       }}
     >
       {children}

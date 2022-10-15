@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
       },
+      dropShadow: {
+        "custom": "0px -25px 100px rgb(16, 16, 16)",
+      },
     },
   },
   plugins: [],
