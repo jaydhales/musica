@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const MusicContext = createContext();
 
@@ -14,10 +15,27 @@ const MusicContextProvider = ({ children }) => {
   const [details, setDetails] = useState();
   const [detailsBg, setDetailsBg] = useState("");
   const [audioQueue, setAudioQueue] = useState();
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [isNavOpen, setNavOpen] = useState(true);
 
   //Get Screen Width
-  window.onload = (e) => setScreenWidth(window.innerWidth);
-  window.onresize = (e) => setScreenWidth(e.target.innerWidth);
+  window.onload = (e) => {
+    setScreenWidth(window.innerWidth);
+    
+  };
+  window.onresize = (e) => {
+    setScreenWidth(e.target.innerWidth);
+  };
+
+  useEffect(() => {
+    if (screenWidth < 768) {
+      setNavOpen(false);
+    } else {
+      setNavOpen(true);
+    }
+  }, [screenWidth])
+
+  
 
   const fetchData = async (path) => {
     return (await axios.get("/api/" + path)).data;
@@ -49,6 +67,10 @@ const MusicContextProvider = ({ children }) => {
         setDetailsBg,
         audioQueue,
         setAudioQueue,
+        trackIndex,
+        setTrackIndex,
+        isNavOpen,
+        setNavOpen,
       }}
     >
       {children}

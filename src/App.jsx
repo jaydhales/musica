@@ -20,7 +20,14 @@ import bars from "./assets/bars.svg";
 
 function App() {
   const path = useLocation();
-  const { detailsBg, setDetails, setDetailsBg } = useContext(MusicContext);
+  const {
+    detailsBg,
+    setDetails,
+    setDetailsBg,
+    isNavOpen,
+    setNavOpen,
+    screenWidth,
+  } = useContext(MusicContext);
   if (path.pathname === "/") path.pathname = "/home";
 
   useEffect(() => {
@@ -28,18 +35,25 @@ function App() {
       setDetailsBg("");
       setDetails("");
     }
-  }, [path]);
+    screenWidth < 768 && setNavOpen(false);
+  }, [path.pathname]);
 
-  // Set Background  to current music
+  // Set Details Background  to current music
   document.getElementById("root").style.backgroundImage = `url(${detailsBg})`;
-
   const bodyClass = detailsBg !== "" ? "body withBg" : "body noBg";
 
   return (
     <div className={bodyClass}>
       <div className="app">
         <header>
-          <ObjectSvg data={bars} />
+          <a
+            href="#"
+            onClick={(e) => setNavOpen(!isNavOpen)}
+            className="mobile-btn"
+          >
+            <img src={bars} alt="" />
+          </a>
+
           <img src={logo} alt="Musica Logo" className="p-1" />
           <Search />
         </header>
@@ -52,6 +66,8 @@ function App() {
             <Route path="/radio" element={<Radio />} />
             <Route path="/library" element={<Library />} />
             <Route path="/:type/:query" element={<Details />} />
+
+            <Route path="*" element={<>Not Found</>} />
           </Routes>
           <Player />
         </div>

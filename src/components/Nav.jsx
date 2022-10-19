@@ -1,23 +1,7 @@
 import { NavLink } from "react-router-dom";
-
 import homeIcon from "../assets/home.svg";
-import homeIconActive from "../assets/home-active.svg";
-import playlistIcon from "../assets/playlist.svg";
-import playlistIconActive from "../assets/playlist-active.svg";
-import radioIcon from "../assets/radio.svg";
-import radioIconActive from "../assets/radio-active.svg";
-import videoIcon from "../assets/videos.svg";
-import videoIconActive from "../assets/video-active.svg";
-import { useState } from "react";
 
-const Nav = () => {
-  const navArr = [
-    ["/home", "Home", homeIcon, homeIconActive],
-    ["/collections", "My Collections", playlistIcon, playlistIconActive],
-    ["/radio", "Radio", radioIcon, radioIconActive],
-    ["/library", "Library", videoIcon, videoIconActive],
-  ];
-
+const Nav = ({ navArr }) => {
   const navLink = (navData) =>
     navData.isActive ? "nav-link active" : "nav-link";
 
@@ -28,12 +12,13 @@ const Nav = () => {
           <img
             src={src}
             alt={title}
-            className={src !== homeIcon ? "py-[10px] nav-icon" : "nav-icon"}
+            className={src !== homeIcon ? "p-[10px] nav-icon" : "nav-icon"}
           />
+
           <img
             src={srcActive}
             alt={title}
-            className={src !== homeIcon ? "py-[10px] nav-icon-a" : "nav-icon-a"}
+            className={src !== homeIcon ? "p-[10px] nav-icon-a" : "nav-icon-a"}
           />
 
           <span>{title}</span>

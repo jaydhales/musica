@@ -8,7 +8,7 @@ import Play from "../assets/Play.svg";
 import Add from "../assets/music-square-add.svg";
 
 const Details = () => {
-  const { details, setDetails, fetchData, setDetailsBg, setAudioQueue } =
+  const { details, setDetails, fetchData, setDetailsBg, setAudioQueue, setTrackIndex } =
     useContext(MusicContext);
   const { type, query } = useParams();
 
@@ -30,6 +30,7 @@ const Details = () => {
 
     if (text === "Play All") {
       setAudioQueue(details.tracks);
+      setTrackIndex(0)
     }
   };
 

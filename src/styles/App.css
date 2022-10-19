@@ -11,7 +11,7 @@
   }
 
   .withBg {
-    @apply bg-gradient-to-b from-[#1D2123CC] via-[#1d2123e5] to-[#1D2123] bg-fixed;
+    @apply bg-gradient-to-b from-[#1d2123e1] via-[#1d2123f1] to-[#1D2123] bg-fixed;
   }
 
   .app {
@@ -19,7 +19,7 @@
   }
 
   header {
-    @apply flex gap-8;
+    @apply flex gap-8 items-center;
   }
 
   .main {
@@ -27,22 +27,27 @@
   }
 
   .menu {
-    @apply md:fixed md:left-5;
+    @apply fixed hidden z-30 w-screen left-0 top-16 md:pt-24 min-h-screen bg-dark md:bg-transparent md:w-max  md:left-5;
+  }
+
+  .menu.nav-active {
+    @apply block;
   }
 
   .nav {
-    @apply bg-dark-alt hidden w-max py-4 rounded-full md:grid;
+    @apply md:bg-dark-alt md:w-max py-4 md:mb-4 md:rounded-full md:grid;
+  }
+
+  .mobile-btn {
+    @apply md:hidden h-max;
   }
 
   .nav-link {
-    @apply flex items-center gap-4;
-  }
-  .nav-link img {
-    @apply mx-auto;
+    @apply flex items-center gap-7 md:gap-4 mx-10 md:mx-0;
   }
 
   .nav-link span {
-    @apply hidden;
+    @apply md:hidden;
   }
 
   .active .nav-icon {
@@ -166,7 +171,7 @@
   }
 
   .info4 {
-    @apply absolute right-0;
+    @apply absolute right-0 top-1/2 -translate-y-1/2;
   }
 }
 

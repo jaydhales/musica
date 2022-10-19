@@ -6,8 +6,8 @@ import "react-h5-audio-player/lib/styles.css";
 import "../styles/audio-player.css";
 
 const Player = () => {
-  const { audioQueue } = useContext(MusicContext);
-  const [trackIndex, setTrackIndex] = useState(0);
+  const { audioQueue, trackIndex,setTrackIndex } = useContext(MusicContext);
+  
 
   const handleClickPrevious = () => {
     setTrackIndex((currentTrack) =>
