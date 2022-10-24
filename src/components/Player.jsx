@@ -6,8 +6,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../styles/audio-player.css";
 
 const Player = () => {
-  const { audioQueue, trackIndex,setTrackIndex } = useContext(MusicContext);
-  
+  const { audioQueue, trackIndex, setTrackIndex } = useContext(MusicContext);
 
   const handleClickPrevious = () => {
     setTrackIndex((currentTrack) =>
@@ -24,8 +23,9 @@ const Player = () => {
   if (!audioQueue) return null;
 
   const audioTracks = audioQueue.data;
-  const currentTrack = audioTracks[trackIndex];
 
+  console.log(audioTracks[0])
+  const currentTrack = audioTracks[trackIndex];
 
   return (
     <section className="audio-container">
@@ -50,5 +50,5 @@ const Player = () => {
     </section>
   );
 };
-``
+``;
 export default Player;

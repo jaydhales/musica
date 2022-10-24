@@ -1,0 +1,28 @@
+@tailwind components;
+
+@layer components {
+  .no-coll {
+    @apply grid place-content-center h-[calc(100vh-300px)];
+  }
+
+  .collections-sect {
+    @apply flex flex-wrap gap-6;
+  }
+
+  .collection-card {
+    @apply w-40 md:w-60 h-40 md:h-60 rounded-2xl relative overflow-hidden;
+  }
+
+  .collection-card img {
+    @apply w-full absolute left-0   transition-all duration-300;
+  }
+
+  .coll-content {
+    @apply h-full p-5 relative bg-gradient-to-b from-[#00000000] to-[#0f1213e1]; 
+  }
+
+  .coll-content div {
+    @apply absolute bottom-5 z-10;
+  }
+}
+

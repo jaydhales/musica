@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MusicContext } from "../contexts/MusicContext";
 import TrackCard from "../components/TrackCard";
@@ -8,9 +8,18 @@ import Play from "../assets/Play.svg";
 import Add from "../assets/music-square-add.svg";
 
 const Details = () => {
-  const { details, setDetails, fetchData, setDetailsBg, setAudioQueue, setTrackIndex } =
-    useContext(MusicContext);
+  const {
+    details,
+    setDetails,
+    fetchData,
+    setDetailsBg,
+    setAudioQueue,
+    setTrackIndex,
+    myCollections,
+    setCollections,
+  } = useContext(MusicContext);
   const { type, query } = useParams();
+  const [isInCollection, setIsInCollection] = useState(false);
 
   useEffect(() => {
     async function getDetails() {
@@ -22,7 +31,18 @@ const Details = () => {
     }
 
     getDetails();
-  }, []);
+
+    // Check if the data exists in collection
+    if (details && myCollections) {
+      const check = myCollections.filter((data) => data.id === details.id);
+
+      check.length === 1 && setIsInCollection(true);
+    }
+  }, [myCollections]);
+
+  if (!details) return null;
+
+  // console.log(collectionText);
 
   const handleOptions = (e, text) => {
     e.preventDefault();
@@ -30,11 +50,18 @@ const Details = () => {
 
     if (text === "Play All") {
       setAudioQueue(details.tracks);
-      setTrackIndex(0)
+      setTrackIndex(0);
+    }
+
+    if (text === "Add to collection") {
+      setCollections((state) => [...state, details]);
+    }
+
+    if (text === "Remove from collection") {
+      setCollections(myCollections.filter((data) => data.id != details.id));
+      setIsInCollection(false);
     }
   };
-
-  if (!details) return null;
 
   return (
     <div>
@@ -55,19 +82,24 @@ const Details = () => {
           </p>
 
           <div className="detail-options">
-            {[[Play, "Play All"], [Add, "Add to collection"], [HeartA]].map(
-              ([src, text]) => (
-                <a
-                  href="#"
-                  className="btn"
-                  key={src}
-                  onClick={(e) => handleOptions(e, text)}
-                >
-                  <img src={src} alt="src" />
-                  {text && <p>{text}</p>}
-                </a>
-              )
-            )}
+            {[
+              [Play, "Play All"],
+              [
+                Add,
+                isInCollection ? "Remove from collection" : "Add to collection",
+              ],
+              [HeartA],
+            ].map(([src, text]) => (
+              <a
+                href="#"
+                className="btn"
+                key={src}
+                onClick={(e) => handleOptions(e, text)}
+              >
+                <img src={src} alt="src" />
+                {text && <p>{text}</p>}
+              </a>
+            ))}
           </div>
         </div>
       </section>

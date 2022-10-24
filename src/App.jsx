@@ -31,7 +31,12 @@ function App() {
   if (path.pathname === "/") path.pathname = "/home";
 
   useEffect(() => {
-    if (path.pathname === "/home" || "/collections" || "/library" || "radio") {
+    if (
+      path.pathname === "/home" ||
+      path.pathname === "/collections" ||
+      path.pathname === "/library" ||
+      path.pathname === "radio"
+    ) {
       setDetailsBg("");
       setDetails("");
     }

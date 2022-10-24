@@ -173,6 +173,14 @@
   .info4 {
     @apply absolute right-0 top-1/2 -translate-y-1/2;
   }
+
+  .search-box {
+    @apply flex gap-4 w-full;
+  }
+
+  .search-bar {
+    @apply bg-transparent focus-visible:outline-none focus-visible:border-primary focus-visible:border-[1px] w-full p-2 rounded-md;
+  }
 }
 
 /* Custom Css */

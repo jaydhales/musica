@@ -8,6 +8,7 @@ const MusicContextProvider = ({ children }) => {
   // All logic stays here
   const apiUrl = "https://cors-anywhere.herokuapp.com/api.deezer.com/";
   const [hero, setHero] = useState();
+  const [myCollections, setCollections] = useState([]);
   const [chartsData, setChartsData] = useState();
   const [release, setRelease] = useState();
   const [popular, setPopular] = useState();
@@ -21,7 +22,6 @@ const MusicContextProvider = ({ children }) => {
   //Get Screen Width
   window.onload = (e) => {
     setScreenWidth(window.innerWidth);
-    
   };
   window.onresize = (e) => {
     setScreenWidth(e.target.innerWidth);
@@ -33,9 +33,7 @@ const MusicContextProvider = ({ children }) => {
     } else {
       setNavOpen(true);
     }
-  }, [screenWidth])
-
-  
+  }, [screenWidth]);
 
   const fetchData = async (path) => {
     return (await axios.get("/api/" + path)).data;
@@ -47,6 +45,7 @@ const MusicContextProvider = ({ children }) => {
       setChartsData(await fetchData("chart/0/playlists?index=0&limit=3"));
       setRelease(await fetchData("editorial/2/releases"));
       setPopular(await fetchData("chart/0/albums"));
+      // setCollections(await fetchData("chart/0/albums"));
     }
 
     runData();
@@ -71,6 +70,8 @@ const MusicContextProvider = ({ children }) => {
         setTrackIndex,
         isNavOpen,
         setNavOpen,
+        myCollections,
+        setCollections,
       }}
     >
       {children}
