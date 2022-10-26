@@ -1,4 +1,4 @@
-import ObjectSvg from "../components/ObjectSvg";
+import ObjectSvg from "./ObjectSvg";
 import grain from "../assets/grain.svg";
 import { MusicContext } from "../contexts/MusicContext";
 import { useContext } from "react";
