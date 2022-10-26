@@ -19,7 +19,7 @@
   }
 
   header {
-    @apply flex gap-8 items-center;
+    @apply flex gap-8 items-center relative;
   }
 
   .main {
@@ -180,6 +180,18 @@
 
   .search-bar {
     @apply bg-transparent focus-visible:outline-none focus-visible:border-primary focus-visible:border-[1px] w-full p-2 rounded-md;
+  }
+
+  .search-result-container {
+    @apply absolute top-full z-50 p-2 px-8 bg-dark rounded-xl w-full left-0 mt-2;
+  }
+
+  .search-result-container .inner {
+    @apply grid gap-6 h-screen;
+  }
+
+  .search-results {
+    @apply flex gap-4 items-center bg-dark-alt p-2 rounded-xl;
   }
 }
 

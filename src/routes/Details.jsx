@@ -17,11 +17,13 @@ const Details = () => {
     setTrackIndex,
     myCollections,
     setCollections,
+    setSearchResults,
   } = useContext(MusicContext);
   const { type, query } = useParams();
   const [isInCollection, setIsInCollection] = useState(false);
 
   useEffect(() => {
+    setSearchResults([]);
     async function getDetails() {
       const data = await fetchData(type + "/" + query);
 

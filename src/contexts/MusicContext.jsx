@@ -18,6 +18,7 @@ const MusicContextProvider = ({ children }) => {
   const [audioQueue, setAudioQueue] = useState();
   const [trackIndex, setTrackIndex] = useState(0);
   const [isNavOpen, setNavOpen] = useState(true);
+  const [searchResults, setSearchResults] = useState([]);
 
   //Get Screen Width
   window.onload = (e) => {
@@ -72,6 +73,8 @@ const MusicContextProvider = ({ children }) => {
         setNavOpen,
         myCollections,
         setCollections,
+        searchResults,
+        setSearchResults,
       }}
     >
       {children}
