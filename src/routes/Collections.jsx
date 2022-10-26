@@ -7,32 +7,28 @@ import "../styles/collection.css";
 const Collections = () => {
   const { myCollections } = useContext(MusicContext);
 
+  if (!myCollections) return null;
+
   if (myCollections.length === 0) return <NoCollection />;
-
-  console.log(myCollections);
-
-  myCollections.forEach((item) => {
-    console.log(item.artist);
-  });
 
   return (
     <section className="collections-sect">
-      {myCollections.map((info) => (
+      {myCollections.map(({ data }) => (
         <Link
-          to={`/${info.type}/${info.id}`}
-          key={info.id}
+          to={`/${data.type}/${data.id}`}
+          key={data.id}
           className="collection-card group"
         >
           <img
-            src={info.picture_medium || info.cover_medium}
+            src={data.picture_medium || data.cover_medium}
             alt=""
             className="group-hover:scale-125"
           />
           <div className="coll-content">
             <div>
-              <h4>{info.title}</h4>
-              {info.artist && <p>{info.artist.name}</p>}
-              {info.creator && <p>{info.creator.name}</p>}
+              <h4>{data.title}</h4>
+              {data.artist && <p>{data.artist.name}</p>}
+              {data.creator && <p>{data.creator.name}</p>}
             </div>
           </div>
         </Link>

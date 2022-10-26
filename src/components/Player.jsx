@@ -23,8 +23,7 @@ const Player = () => {
   if (!audioQueue) return null;
 
   const audioTracks = audioQueue.data;
-
-  console.log(audioTracks[0])
+  
   const currentTrack = audioTracks[trackIndex];
 
   return (

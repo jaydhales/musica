@@ -16,39 +16,38 @@ const Details = () => {
     setAudioQueue,
     setTrackIndex,
     myCollections,
-    setCollections,
+    addToCollections,
+    removeFromCollections,
     setSearchResults,
   } = useContext(MusicContext);
   const { type, query } = useParams();
   const [isInCollection, setIsInCollection] = useState(false);
 
   useEffect(() => {
-    setSearchResults([]);
-    async function getDetails() {
-      const data = await fetchData(type + "/" + query);
-
-      setDetails(data);
-      setDetailsBg(data.picture_xl || data.cover_xl);
-      // setAudioQueue(data.tracks);
-    }
-
-    getDetails();
-
     // Check if the data exists in collection
     if (details && myCollections) {
       const check = myCollections.filter((data) => data.id === details.id);
 
       check.length === 1 && setIsInCollection(true);
     }
-  }, [myCollections]);
+  }, [details]);
+
+  useEffect(() => {
+    setSearchResults([]);
+    async function getDetails() {
+      const data = await fetchData(type + "/" + query + "?index=0&limit=50");
+
+      setDetails(data);
+      setDetailsBg(data.picture_xl || data.cover_xl);
+    }
+
+    getDetails();
+  }, [query]);
 
   if (!details) return null;
 
-  // console.log(collectionText);
-
   const handleOptions = (e, text) => {
     e.preventDefault();
-    console.log(text);
 
     if (text === "Play All") {
       setAudioQueue(details.tracks);
@@ -56,11 +55,11 @@ const Details = () => {
     }
 
     if (text === "Add to collection") {
-      setCollections((state) => [...state, details]);
+      addToCollections(details);
     }
 
     if (text === "Remove from collection") {
-      setCollections(myCollections.filter((data) => data.id != details.id));
+      removeFromCollections(details.id);
       setIsInCollection(false);
     }
   };
