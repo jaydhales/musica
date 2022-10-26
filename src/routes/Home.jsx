@@ -1,4 +1,4 @@
-import Hero from "./Hero.jsx";
+import Hero from "../components/Hero.jsx";
 import ChartList from "../components/ChartList";
 import MusicList from "../components/MusicList";
 import { useContext } from "react";

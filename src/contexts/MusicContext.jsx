@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import collectionLogic from "./CollectionLogic";
 
 const MusicContext = createContext();
 
@@ -8,7 +8,6 @@ const MusicContextProvider = ({ children }) => {
   // All logic stays here
   const apiUrl = "https://cors-anywhere.herokuapp.com/api.deezer.com/";
   const [hero, setHero] = useState();
-  const [myCollections, setCollections] = useState([]);
   const [chartsData, setChartsData] = useState();
   const [release, setRelease] = useState();
   const [popular, setPopular] = useState();
@@ -19,6 +18,9 @@ const MusicContextProvider = ({ children }) => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [isNavOpen, setNavOpen] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
+
+  const { myCollections, addToCollections, removeFromCollections } =
+    collectionLogic();
 
   //Get Screen Width
   window.onload = (e) => {
@@ -72,7 +74,8 @@ const MusicContextProvider = ({ children }) => {
         isNavOpen,
         setNavOpen,
         myCollections,
-        setCollections,
+        addToCollections,
+        removeFromCollections,
         searchResults,
         setSearchResults,
       }}
