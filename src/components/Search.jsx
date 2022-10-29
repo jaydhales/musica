@@ -6,10 +6,11 @@ import Scroller from "./Scroller";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const [searchClass, setSearchClass] = useState("");
   const [showResult, setShowResult] = useState(false);
-  const { fetchData, searchResults, setSearchResults } = useContext(MusicContext);
+  const { fetchData, searchResults, setSearchResults } =
+    useContext(MusicContext);
 
   const handleSearch = async () => {
     const { data } = await fetchData("search?q=" + searchQuery);
@@ -39,15 +40,15 @@ const Search = () => {
       <div className={searchClass}>
         <Scroller direction={"vertical"} customStyle={"inner"}>
           {searchResults.length > 0 &&
-            searchResults.map((result) => (
-              <div className="search-results" key={result.id}>
+            searchResults.map(({ id, album, title, artist }) => (
+              <div className="search-results" key={id}>
                 <img
-                  src={result.album.cover_small}
-                  alt=""
+                  src={album.cover_small}
+                  alt={title}
                   className="track-cover"
                 />
-                <Link to={`album/${result.album.id}`}>{result.title}</Link>
-                <p>{result.artist.name}</p>
+                <Link to={`album/${album.id}`}>{title}</Link>
+                <p>{artist.name}</p>
               </div>
             ))}
         </Scroller>

@@ -3,14 +3,15 @@ import likeIcon from "../assets/like.svg";
 import { Link } from "react-router-dom";
 
 const Chart = ({ info }) => {
+  const { picture_medium, title, user, id } = info;
   return (
     <div className="chart">
-      <Link to={"/playlist/" + info.id}>
+      <Link to={"/playlist/" + id}>
         <div className="content">
-          <img src={info.picture_medium} alt="" className="chart-icon" />
+          <img src={picture_medium} alt="" className="chart-icon" />
           <div className="details">
-            <h3>{info.title}</h3>
-            <p>{info.user.name}</p>
+            <h3>{title}</h3>
+            <p>{user.name}</p>
           </div>
         </div>
       </Link>

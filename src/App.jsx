@@ -5,8 +5,9 @@ import { MusicContext } from "./contexts/MusicContext";
 // Import Components
 import Menu from "./components/Menu";
 import Search from "./components/Search";
-import Player from "./components/Player.jsx";
+import Player from "./components/Player";
 import ObjectSvg from "./components/ObjectSvg";
+
 // Import Routes
 import Home from "./routes/Home";
 import Collections from "./routes/Collections";
@@ -14,12 +15,14 @@ import Radio from "./routes/Radio";
 import Library from "./routes/Library";
 import Details from "./routes/Details";
 
+// Import Assets and styles
 import "./styles/App.css";
 import logo from "./assets/logo.svg";
 import bars from "./assets/bars.svg";
 
 function App() {
   const path = useLocation();
+
   const {
     detailsBg,
     setDetails,
@@ -28,18 +31,21 @@ function App() {
     setNavOpen,
     screenWidth,
   } = useContext(MusicContext);
+
+  // route index update to home
   if (path.pathname === "/") path.pathname = "/home";
 
   useEffect(() => {
+    //
     if (
-      path.pathname === "/home" ||
-      path.pathname === "/collections" ||
-      path.pathname === "/library" ||
-      path.pathname === "radio"
+      path.pathname.includes("playlist") ||
+      path.pathname.includes("artist")
     ) {
+    } else {
       setDetailsBg("");
       setDetails("");
     }
+
     screenWidth < 768 && setNavOpen(false);
   }, [path.pathname]);
 

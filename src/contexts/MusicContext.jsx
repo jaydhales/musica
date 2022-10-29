@@ -38,8 +38,9 @@ const MusicContextProvider = ({ children }) => {
     }
   }, [screenWidth]);
 
-  const fetchData = async (path) => {
-    return (await axios.get("/api/" + path)).data;
+  // Function to fetch api with @param;
+  const fetchData = async (params) => {
+    return (await axios.get("/api/" + params)).data;
   };
 
   useEffect(() => {
@@ -48,7 +49,6 @@ const MusicContextProvider = ({ children }) => {
       setChartsData(await fetchData("chart/0/playlists?index=0&limit=3"));
       setRelease(await fetchData("editorial/2/releases"));
       setPopular(await fetchData("chart/0/albums"));
-      // setCollections(await fetchData("chart/0/albums"));
     }
 
     runData();

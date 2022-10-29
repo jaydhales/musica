@@ -56,6 +56,7 @@ const Details = () => {
 
     if (text === "Add to collection") {
       addToCollections(details);
+      setIsInCollection(true);
     }
 
     if (text === "Remove from collection") {
