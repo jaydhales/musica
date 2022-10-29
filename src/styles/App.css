@@ -99,7 +99,7 @@
   }
 
   .chart-main {
-    @apply flex lg:flex-col w-max lg:w-auto gap-8 lg:gap-4;
+    @apply flex lg:flex-col w-max lg:w-auto gap-8 lg:gap-4 py-4;
   }
 
   .chart {
@@ -126,7 +126,7 @@
     @apply overflow-hidden;
   }
   .lists {
-    @apply grid grid-flow-col w-max gap-[30px];
+    @apply grid grid-flow-col w-max gap-[30px] py-4;
   }
 
   .album-card {
@@ -159,7 +159,7 @@
   }
 
   .track-cover {
-    @apply w-10 rounded-lg;
+    @apply w-14 rounded-lg;
   }
 
   .track-info {
@@ -192,6 +192,12 @@
 
   .search-results {
     @apply flex gap-4 items-center bg-dark-alt p-2 rounded-xl;
+  }
+
+  .chart,
+  .album-card,
+  .btn {
+    @apply hover:scale-105 duration-100;
   }
 }
 
