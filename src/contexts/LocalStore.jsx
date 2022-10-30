@@ -23,7 +23,7 @@ const LocalStore = () => {
   const addToRecent = async (data) => {
     const { id } = data;
     const isInData = recentlyPlayed.filter((data) => data.id === id);
-
+    // Check if data exist and update timestamp if true
     if (isInData.length) {
       await db.recent.update(id, { timeStamp: Date.now() });
     } else {
@@ -32,6 +32,15 @@ const LocalStore = () => {
         data,
         timeStamp: Date.now(),
       });
+    }
+
+    const oldestItem = recentlyPlayed.sort(
+      (a, b) => a.timeStamp - b.timeStamp
+    )[0];
+
+    // Limit Storage to only 5 items
+    if (recentlyPlayed.length > 5) {
+      await db.recent.delete(oldestItem.id);
     }
   };
 
