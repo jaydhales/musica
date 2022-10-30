@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/api/:splat", "destination": "https://api.deezer.com/:splat" }
+  ]
+}
