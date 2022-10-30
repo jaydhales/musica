@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { MusicContext } from "../contexts/MusicContext";
 
@@ -6,7 +6,12 @@ import "react-h5-audio-player/lib/styles.css";
 import "../styles/audio-player.css";
 
 const Player = () => {
-  const { audioQueue, trackIndex, setTrackIndex } = useContext(MusicContext);
+  const { audioQueue, trackIndex, setTrackIndex, addToRecent } =
+    useContext(MusicContext);
+
+  useEffect(() => {
+    audioQueue && addToRecent(audioQueue);
+  }, [audioQueue]);
 
   const handleClickPrevious = () => {
     setTrackIndex((currentTrack) =>
@@ -22,8 +27,10 @@ const Player = () => {
 
   if (!audioQueue) return null;
 
-  const audioTracks = audioQueue.data;
-  
+  const { tracks } = audioQueue;
+
+  const audioTracks = tracks.data;
+
   const currentTrack = audioTracks[trackIndex];
 
   return (

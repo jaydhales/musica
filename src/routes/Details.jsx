@@ -50,7 +50,7 @@ const Details = () => {
     e.preventDefault();
 
     if (text === "Play All") {
-      setAudioQueue(details.tracks);
+      setAudioQueue(details);
       setTrackIndex(0);
     }
 

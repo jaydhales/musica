@@ -5,7 +5,10 @@ import { useContext } from "react";
 import { MusicContext } from "../contexts/MusicContext.jsx";
 
 const Home = () => {
-  const { release, popular, setDetailsBg } = useContext(MusicContext);
+  const { release, popular, setDetailsBg, recentlyPlayed } =
+    useContext(MusicContext);
+
+  recentlyPlayed && console.log(recentlyPlayed);
 
   return (
     <div className="home">
@@ -18,6 +21,13 @@ const Home = () => {
 
       {popular && (
         <MusicList title="Popular in your area." data={popular.data} />
+      )}
+
+      {recentlyPlayed && (
+        <MusicList
+          title="Recently Played"
+          data={recentlyPlayed.sort((a, b) => a.timeStamp - b.timeStamp)}
+        />
       )}
     </div>
   );

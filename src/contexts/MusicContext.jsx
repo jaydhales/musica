@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import collectionLogic from "./CollectionLogic";
+import LocalStore from "./LocalStore";
 
 const MusicContext = createContext();
 
@@ -19,8 +19,13 @@ const MusicContextProvider = ({ children }) => {
   const [isNavOpen, setNavOpen] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
 
-  const { myCollections, addToCollections, removeFromCollections } =
-    collectionLogic();
+  const {
+    myCollections,
+    addToCollections,
+    removeFromCollections,
+    recentlyPlayed,
+    addToRecent,
+  } = LocalStore();
 
   //Get Screen Width
   window.onload = (e) => {
@@ -78,6 +83,8 @@ const MusicContextProvider = ({ children }) => {
         removeFromCollections,
         searchResults,
         setSearchResults,
+        recentlyPlayed,
+        addToRecent,
       }}
     >
       {children}

@@ -7,9 +7,10 @@ const MusicList = ({ title, data }) => {
       <h2>{title}</h2>
 
       <Scroller direction="horizontal" customStyle="lists">
-        {data.map((info) => (
-          <AlbumCard info={info} key={info.id} />
-        ))}
+        {title === "Recently Played"
+          ? data &&
+            data.map(({ data }) => <AlbumCard info={data} key={data.id} />)
+          : data && data.map((info) => <AlbumCard info={info} key={info.id} />)}
       </Scroller>
     </section>
   );
