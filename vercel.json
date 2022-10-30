@@ -1,5 +1,9 @@
 {
   "redirects": [
-    { "source": "/api/:splat", "destination": "https://api.deezer.com/:splat" }
+    {
+      "source": "/api/:splat",
+      "destination": "https://api.deezer.com/:splat",
+      "statusCode": 200
+    }
   ]
 }
