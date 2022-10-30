@@ -8,8 +8,6 @@ const Home = () => {
   const { release, popular, setDetailsBg, recentlyPlayed } =
     useContext(MusicContext);
 
-  recentlyPlayed && console.log(recentlyPlayed);
-
   return (
     <div className="home">
       <section className="top-section">
