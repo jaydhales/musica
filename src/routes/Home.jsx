@@ -26,7 +26,7 @@ const Home = () => {
       {recentlyPlayed && (
         <MusicList
           title="Recently Played"
-          data={recentlyPlayed.sort((a, b) => a.timeStamp - b.timeStamp)}
+          data={recentlyPlayed.sort((a, b) => b.timeStamp - a.timeStamp)}
         />
       )}
     </div>
