@@ -1,4 +1,2 @@
+/* /index.html 200
 
-/album/* /album:splat 200
-/playlist/* /playlist:splat 200
-/api/*  https://api.deezer.com/:splat 200
