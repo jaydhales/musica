@@ -45,7 +45,7 @@ const MusicContextProvider = ({ children }) => {
 
   // Function to fetch api with @param;
   const fetchData = async (params) => {
-    return (await axios.get("/api/" + params)).data;
+    return (await axios.get(apiUrl + params)).data;
   };
 
   useEffect(() => {
