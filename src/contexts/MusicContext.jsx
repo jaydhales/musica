@@ -19,26 +19,6 @@ const MusicContextProvider = ({ children }) => {
   const [isNavOpen, setNavOpen] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
 
-  (function () {
-    var cors_api_host = "cors-anywhere.herokuapp.com";
-    var cors_api_url = "https://" + cors_api_host + "/";
-    var slice = [].slice;
-    var origin = window.location.protocol + "//" + window.location.host;
-    var open = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function () {
-      var args = slice.call(arguments);
-      var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-      if (
-        targetOrigin &&
-        targetOrigin[0].toLowerCase() !== origin &&
-        targetOrigin[1] !== cors_api_host
-      ) {
-        args[1] = cors_api_url + args[1];
-      }
-      return open.apply(this, args);
-    };
-  })();
-
   const {
     myCollections,
     addToCollections,
@@ -65,6 +45,25 @@ const MusicContextProvider = ({ children }) => {
 
   // Function to fetch api with @param;
   const fetchData = async (params) => {
+    (function () {
+      var cors_api_host = "cors-anywhere.herokuapp.com";
+      var cors_api_url = "https://" + cors_api_host + "/";
+      var slice = [].slice;
+      var origin = window.location.protocol + "//" + window.location.host;
+      var open = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function () {
+        var args = slice.call(arguments);
+        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
+        if (
+          targetOrigin &&
+          targetOrigin[0].toLowerCase() !== origin &&
+          targetOrigin[1] !== cors_api_host
+        ) {
+          args[1] = cors_api_url + args[1];
+        }
+        return open.apply(this, args);
+      };
+    })();
     return (await axios.get(apiUrl + params)).data;
   };
 
