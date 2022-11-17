@@ -46,8 +46,6 @@ function App() {
       setDetailsBg("");
       setDetails("");
     }
-
-    screenWidth < 768 && setNavOpen(false);
   }, [path.pathname]);
 
   // Get screen width on window resize
@@ -65,15 +63,18 @@ function App() {
 
   // Close mobile nav when width is above 800px and path changes
   useEffect(() => {
-    setNavOpen(false);
-  }, [screenWidth > 800]);
+    if (screenWidth > 800) {
+      setNavOpen(true);
+    } else {
+      setNavOpen(false);
+    }
+  }, [screenWidth]);
 
   useEffect(() => {
-    setNavOpen(false);
-
-    // move view back to top
-    window.scrollTo(0, 0);
-  }, [location]);
+    if (screenWidth < 800) {
+      setNavOpen(false);
+    }
+  }, [path]);
 
   // Set Details Background  to current music
   document.getElementById("root").style.backgroundImage = `url(${detailsBg})`;
@@ -84,8 +85,11 @@ function App() {
       <div className="app">
         <header>
           <a
-            href="#"
-            onClick={(e) => setNavOpen(!isNavOpen)}
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              setNavOpen(!isNavOpen);
+            }}
             className="mobile-btn"
           >
             <img src={bars} alt="" />
