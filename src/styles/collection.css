@@ -1,6 +1,14 @@
 @tailwind components;
 
 @layer components {
+  .title {
+    @apply text-2xl;
+  }
+
+  .artist {
+    @apply text-[12px];
+  }
+
   .no-coll {
     @apply grid place-content-center h-[calc(100vh-300px)];
   }
@@ -10,19 +18,30 @@
   }
 
   .collection-card {
-    @apply w-40 md:w-60 h-40 md:h-60 rounded-2xl relative overflow-hidden;
+    @apply w-full sm:w-60 h-60 sm:h-60 rounded-2xl relative overflow-hidden;
   }
 
-  .collection-card img {
-    @apply w-full absolute left-0   transition-all duration-300;
+  .collection-card * {
+    @apply transition-all duration-300;
+  }
+
+  .coll-bg {
+    @apply w-full h-full object-cover absolute left-0;
   }
 
   .coll-content {
-    @apply h-full p-5 relative bg-gradient-to-b from-[#00000000] to-[#0f1213e1]; 
+    @apply h-full p-5 relative bg-gradient-to-b from-[#00000000] to-[#0f1213e1];
   }
 
   .coll-content div {
-    @apply absolute bottom-5 z-10;
+    @apply absolute -bottom-8 z-10;
+  }
+
+  .coll-play {
+    @apply absolute right-5 -bottom-full z-20;
+  }
+
+  .likes {
+    @apply mt-8;
   }
 }
-
