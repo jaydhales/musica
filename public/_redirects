@@ -1,1 +1,2 @@
 /api/*  https://api.deezer.com/:splat 200
+/home   /index.html 200
