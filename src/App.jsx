@@ -30,6 +30,7 @@ function App() {
     isNavOpen,
     setNavOpen,
     screenWidth,
+    setScreenWidth,
   } = useContext(MusicContext);
 
   // route index update to home
@@ -48,6 +49,31 @@ function App() {
 
     screenWidth < 768 && setNavOpen(false);
   }, [path.pathname]);
+
+  // Get screen width on window resize
+  useEffect(() => {
+    const resizeListener = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", resizeListener);
+
+    return () => {
+      window.removeEventListener("resize", resizeListener);
+    };
+  }, []);
+
+  // Close mobile nav when width is above 800px and path changes
+  useEffect(() => {
+    setNavOpen(false);
+  }, [screenWidth > 800]);
+
+  useEffect(() => {
+    setNavOpen(false);
+
+    // move view back to top
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Set Details Background  to current music
   document.getElementById("root").style.backgroundImage = `url(${detailsBg})`;

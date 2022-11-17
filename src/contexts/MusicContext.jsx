@@ -11,7 +11,7 @@ const MusicContextProvider = ({ children }) => {
   const [chartsData, setChartsData] = useState();
   const [release, setRelease] = useState();
   const [popular, setPopular] = useState();
-  const [screenWidth, setScreenWidth] = useState();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [details, setDetails] = useState();
   const [detailsBg, setDetailsBg] = useState("");
   const [audioQueue, setAudioQueue] = useState();
@@ -27,25 +27,9 @@ const MusicContextProvider = ({ children }) => {
     addToRecent,
   } = LocalStore();
 
-  //Get Screen Width
-  window.onload = (e) => {
-    setScreenWidth(window.innerWidth);
-  };
-  window.onresize = (e) => {
-    setScreenWidth(e.target.innerWidth);
-  };
-
-  useEffect(() => {
-    if (screenWidth < 768) {
-      setNavOpen(false);
-    } else {
-      setNavOpen(true);
-    }
-  }, [screenWidth]);
-
   // Function to fetch api with @param;
   const fetchData = async (params) => {
-    return (await axios.get('/api/' + params)).data;
+    return (await axios.get("/api/" + params)).data;
   };
 
   useEffect(() => {
@@ -67,6 +51,7 @@ const MusicContextProvider = ({ children }) => {
         release,
         popular,
         screenWidth,
+        setScreenWidth,
         details,
         setDetails,
         fetchData,
