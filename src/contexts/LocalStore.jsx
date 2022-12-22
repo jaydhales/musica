@@ -33,7 +33,13 @@ const LocalStore = () => {
         timeStamp: Date.now(),
       });
     }
+  };
 
+  const removeFromCollections = async (id) => {
+    await db.collections.delete(id);
+  };
+
+  const limitRecent = async () => {
     const oldestItem = recentlyPlayed.sort(
       (a, b) => a.timeStamp - b.timeStamp
     )[0];
@@ -44,16 +50,13 @@ const LocalStore = () => {
     }
   };
 
-  const removeFromCollections = async (id) => {
-    await db.collections.delete(id);
-  };
-
   return {
     myCollections,
     addToCollections,
     removeFromCollections,
     recentlyPlayed,
     addToRecent,
+    limitRecent,
   };
 };
 

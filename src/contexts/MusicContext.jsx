@@ -25,6 +25,7 @@ const MusicContextProvider = ({ children }) => {
     removeFromCollections,
     recentlyPlayed,
     addToRecent,
+    limitRecent
   } = LocalStore();
 
   // Function to fetch api with @param;
@@ -42,6 +43,10 @@ const MusicContextProvider = ({ children }) => {
 
     runData();
   }, []);
+
+  useEffect(() => {
+    recentlyPlayed && limitRecent();
+  }, [recentlyPlayed]);
 
   return (
     <MusicContext.Provider
