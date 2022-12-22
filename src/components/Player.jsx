@@ -29,7 +29,7 @@ const Player = () => {
 
   const { tracks } = audioQueue;
 
-  const audioTracks = tracks.data;
+  const audioTracks = tracks?.data;
 
   const currentTrack = audioTracks[trackIndex];
 

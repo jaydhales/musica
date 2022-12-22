@@ -10,7 +10,7 @@ const TrackCard = ({ data }) => {
 
   const playTrack = (e) => {
     e.preventDefault();
-    setAudioQueue(details.tracks);
+    setAudioQueue(details);
     setTrackIndex(details.tracks.data.indexOf(data));
   };
 

@@ -19,14 +19,16 @@ const Hero = () => {
           <div className="details">
             <Link to={`/playlist/${hero.id}`}>
               <h1>{hero.title}</h1>
-            </Link>
 
-            <p>
-              The contemporary new wave of alternative, genre-bending and
-              creative afro-fusion music.
-            </p>
+              <p>
+                The contemporary new wave of alternative, genre-bending and
+                creative afro-fusion music.
+              </p>
+            </Link>
           </div>
-          <img src={likes} alt="Hero Likes" />
+          <Link to={`/playlist/${hero.id}`}>
+            <img src={likes} alt="Hero Likes" />
+          </Link>
         </div>
         <img src={artist} alt="Alte Artist" className="cover" />
       </div>

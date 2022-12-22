@@ -15,7 +15,7 @@
   }
 
   .app {
-    @apply max-w-[2000px] mx-auto;
+    @apply max-w-[2000px] mx-auto relative;
   }
 
   header {
@@ -71,11 +71,11 @@
   }
 
   .hero {
-    @apply rounded-4xl w-full h-96 bg-hero p-8 md:px-11 relative overflow-hidden;
+    @apply rounded-4xl w-full h-96 bg-hero p-8 md:px-11 relative overflow-hidden z-10;
   }
 
   .grain {
-    @apply absolute -top-40 -right-40 md:top-0 md:right-0 rotate-90 md:rotate-0 md:h-full;
+    @apply absolute -top-40 -right-40 md:top-0 md:right-0 rotate-90 md:rotate-0 md:h-full -z-10;
   }
 
   .cover {
