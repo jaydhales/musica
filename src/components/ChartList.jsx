@@ -7,13 +7,15 @@ const ChartList = () => {
 
   const directionByWidth = screenWidth > 1024 ? "vertical" : "horizontal";
 
+  console.log(chartsData);
+
   return (
     <aside className="chart-section">
       <h2>Top Charts</h2>
 
       <Scroller direction={directionByWidth} customStyle="chart-main">
         {chartsData &&
-          chartsData.data.map((info) => <Chart key={info.id} info={info} />)}
+          chartsData?.data.map((info) => <Chart key={info.id} info={info} />)}
       </Scroller>
     </aside>
   );
