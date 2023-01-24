@@ -3,10 +3,15 @@ import ChartList from "../components/ChartList";
 import MusicList from "../components/MusicList";
 import { useContext } from "react";
 import { MusicContext } from "../contexts/MusicContext.jsx";
+import { useEffect } from "react";
 
 const Home = () => {
   const { release, popular, setDetailsBg, recentlyPlayed } =
     useContext(MusicContext);
+
+  useEffect(() => {
+    setDetailsBg("");
+  }, []);
 
   return (
     <div className="home">

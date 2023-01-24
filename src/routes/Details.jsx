@@ -6,6 +6,7 @@ import TrackCard from "../components/TrackCard";
 import HeartA from "../assets/Heart-active.svg";
 import Play from "../assets/Play.svg";
 import Add from "../assets/music-square-add.svg";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const {
@@ -57,11 +58,13 @@ const Details = () => {
     if (text === "Add to collection") {
       addToCollections(details);
       setIsInCollection(true);
+      toast("Added to collection", { type: "success" });
     }
 
     if (text === "Remove from collection") {
       removeFromCollections(details.id);
       setIsInCollection(false);
+      toast("Removed from collection", { type: "success" });
     }
   };
 

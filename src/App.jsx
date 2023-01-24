@@ -19,6 +19,8 @@ import Details from "./routes/Details";
 import "./styles/App.css";
 import logo from "./assets/logo.svg";
 import bars from "./assets/bars.svg";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const path = useLocation();
@@ -101,6 +103,19 @@ function App() {
 
         <div className="main">
           <Menu />
+          <ToastContainer
+            position="top-center"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            limit={1}
+          />
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/collections" element={<Collections />} />
